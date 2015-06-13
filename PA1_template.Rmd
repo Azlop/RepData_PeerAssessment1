@@ -7,12 +7,17 @@ output:
 
 
 ## Loading and preprocessing the data
-
-
+```{r loadingData, echo=TRUE}
+data <- read.csv("activity.csv", header = TRUE, sep = ",", stringsAsFactors = FALSE)
+```
 
 ## What is mean total number of steps taken per day?
+```{r mean, echo=TRUE}
+library(ggplot2)
+data_without_missing <- data[complete.cases(data), ]
+total_steps_per_day <- aggregate(steps ~ date, data = data_without_missing, sum)
 
-
+```
 
 ## What is the average daily activity pattern?
 
